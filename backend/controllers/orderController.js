@@ -5,6 +5,7 @@ import Order from '../models/orderModel.js';
 // @route   POST /api/orders
 // @access  Private
 const addOrderItems = asyncHandler(async(req, res) => {
+
   const {
     orderItems,
     shippingAddress,
@@ -13,6 +14,7 @@ const addOrderItems = asyncHandler(async(req, res) => {
     taxPrice,
     shippingPrice,
     totalPrice,
+    user,
   } = req.body;
  
   if (orderItems && orderItems.length === 0) {
@@ -25,19 +27,19 @@ const addOrderItems = asyncHandler(async(req, res) => {
         product: x._id,
         _id: undefined
       })),
-      user: req.user_id,
       shippingAddress,
       paymentMethod,
       itemsPrice,
       taxPrice,
       shippingPrice,
       totalPrice,
+      user,
     })
 
     const createdOrder = await order.save();
 
     res.status(201).json(createdOrder);
-  }
+  };
 });
 
 // @desc    Get logged in user orders
