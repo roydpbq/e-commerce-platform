@@ -1,16 +1,16 @@
 import { LinkContainer } from 'react-router-bootstrap';
 import { Table, Button, Row, Col } from 'react-bootstrap';
-import { FaTimes, FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import {toast} from 'react-toastify';
-import { useGetProductsQuery, useCreateProdutMutation } from '../../slices/productsApiSlice';
+import { useGetProductsQuery, useCreateProductMutation } from '../../slices/productsApiSlice';
 
 const ProductListScreen = () => {
 
   const { data: products, isLoading, error, refetch } = useGetProductsQuery();
 
-  const [createProduct, { isLoading: loadingCreate }] = useCreateProdutMutation();
+  const [createProduct, { isLoading: loadingCreate }] = useCreateProductMutation();
 
   const createProductHandler = async () => {
     if(window.confirm('Are you sure you want create a new product?')){
