@@ -125,7 +125,7 @@ const updateUserProfile = asyncHandler(async(req, res) => {
 // @access  Private/Admin
 const getUsers = asyncHandler(async(req, res) => {
   const users = await User.find({});
-  res.stats(200).json(users);
+  res.status(200).json(users);
 });
 
 // @desc    Get user by ID
@@ -134,7 +134,7 @@ const getUsers = asyncHandler(async(req, res) => {
 const getUserByID = asyncHandler(async(req, res) => {
   const user = await User.find(req.params.id.select('-password'));
   if (user){
-    res.stats(200).json(user);
+    res.status(200).json(user);
   }else{
     res.status(404);
     throw new Error('User not found');
