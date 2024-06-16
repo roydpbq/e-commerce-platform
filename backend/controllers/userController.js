@@ -188,7 +188,7 @@ export {
   getUserProfile,
   updateUserProfile,
   getUsers,
-  deleteUser,
   getUserByID,
+  deleteUser,
   updateUser,
 }
