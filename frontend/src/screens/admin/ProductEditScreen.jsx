@@ -7,7 +7,7 @@ import FormContainer from '../../components/FormContainer';
 import {toast} from 'react-toastify';
 import { 
   useUpdateProductMutation, 
-  useGetProductDetailQuery,
+  useGetProductDetailsQuery,
   useUpdateProductImageMutation,
 }  from '../../slices/productsApiSlice';
 
@@ -23,7 +23,7 @@ const ProductEditScreen = () => {
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState('');
 
-  const { data: product, isLoading, refetch, error } = useGetProductDetailQuery(productId);
+  const { data: product, isLoading, refetch, error } = useGetProductDetailsQuery(productId);
 
   const [updateProduct, { isLoading: loadingUpdate }] = useUpdateProductMutation();
 
